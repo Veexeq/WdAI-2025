@@ -20,18 +20,18 @@ body {
 Colouring the links uniquely 
 Colour palette: #ddbeaa, #bfac8c, #9b9c74, #738d65, #457d5e, #006b5e
 */
-#lista_cwiczen li:first-child {
+#link1 {
       color: #738d65;
 }
 
-#lista_cwiczen li:nth-child(2) {
+#link2 {
       color: #457d5e;
 }
 
-#lista_cwiczen li:nth-child(3) {
+#link3 {
       color: #006b5e;
 }
 
-#lista_cwiczen li {
+li {
       font-size: 2.25vh;
 }
