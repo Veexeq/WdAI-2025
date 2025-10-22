@@ -6,9 +6,10 @@
         <title>Ćwiczenie 3</title>
         <style>
             #main_container {
+                /*
                 border: 2px solid black;
                 padding: 2vh;
-
+                */
                 display: inline-flex;
                 flex-direction: column;
                 gap: 20px;
@@ -20,7 +21,7 @@
                 gap: 20px;
             }
 
-            .flex_div div {
+            .flex_div div, .flex_div img {
                 width: 100px;
                 height: 100px;
             }
@@ -38,12 +39,6 @@
             }
 
             #fourth {
-                background-image: url(images/closeup_cat_photo.webp);
-                background-size: 100px 100px;
-                background-position: center;
-            }
-
-            #fifth {
                 background-color: #457d5e;
             }
         </style>
@@ -57,8 +52,8 @@
                 </div>
                 <div class="flex_div">
                     <div id="third"></div>
+                    <img src="images/closeup_cat_photo.webp" alt="A closeup of a cat's face">
                     <div id="fourth"></div>
-                    <div id="fifth"></div>
                 </div>
             </div>
         </main>
