@@ -1,0 +1,61 @@
+# Flexbox:
+
+display: flex | inline-flex; definiuje container aby był flexboxem
+flex-direction: row | row-reverse | column | column-reverse; ustawia kierunek main axis
+flex-wrap: nowrap (default) | wrap | wrap-reverse; ustawia, czy elementy będą przenoszone do nowej linii
+flex-flow: [flex-direction flex-wrap]; połączenie dwóch wartości w jedno
+justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly; definiuje jak będą rozmieszczone elementy flexboxa na main axis
+align-items: flex-start | flex-end | center | stretch | baseline; definiuje jak będą ustawione elementy na cross axis
+align-content: flex-start | flex-end | center | stretch | space-between | space-around; odpowiednik justify-content, ale dotyczy cross axis. Odnosi się nie do tego ile elementy zajmują miejsca na cross axis (do tego jest align-items), tylko jak rozmieszczone są całe wiersze (lub kolumny) w całym flexboxie, więc aby tym operować, musi być ustawiony flex-wrap.
+gap, row-gap, column-gap: val; ustawia manualnie jakie są przerwy między elementami flexboxa
+order: val; domyślnie każdy element flexboxa ma order = 0. Elementy o większych wartościach będą ustawione na końcu flexboxa, a o mniejszych na początku.
+flex-grow: val; elementy o wartościach dwa razy większych niż inne będą od nich dwa razy większe (na main axis)
+flex-shrink: val; odwrotność flex-grow
+align-self: flex-start | flex-end | center | baseline | stretch; używany do tego, aby pojedyncze elementy miały wartość odmienną niż zadaną w align-items
+
+# CSS Selectors:
+
+A: zwykły selector, np. div
+#id: id obiektu
+A B: zaznacza wszystkie B znajdujące się w A
+#id A: zaznacza wszystkie A które są w elemencie o danym id
+.classname: zaznacza wszystkie elementy z danej klasy
+A.classname: zaznacza wszystkie A które mają klasę classname
+A, B: zaznacza elementy A oraz B
+*: zaznacza wszystko
+A *: zaznacza wszystko w elemencie A
+A + B: zaznacza wszystkie B, które są bezpośrednio w HTML po A (są sąsiadami)
+A ~ B: zaznacza wszystkie B, które są w HTML po A (nie tylko bezpośrednio po)
+A > B: wybiera wszystkie dzieci B elementu A (B zagnieżdżone w A)
+
+# CSS Pseudo-selectors:
+
+A:first-child: wybiera wszystkie elementy A, które są pierwszymi dziećmi w HTML
+A:only-child: wybiera wszystkie A, które są jedynymi dziećmi w HTML
+A:last-child: wybiera wszystkie A, które są ostatnimi dziećmi w HTML
+A:nth-child(x): wybiera wszystkie A, które są x-tym dzieckiem (liczą się wszystkie elementy, nie tylko x-tym dzieckiem tego typu)
+A:nth-last-child(x): to samo, ale na odwrót
+A:first-of-type: wybiera wszystkie A, które są pierwszymi elementami z danego typu w zagnieżdżonymi w jakimś elemencie
+A:nth-of-type(x): wybiera wszystkie A, które są x-tymi elementami z danego rodzaju zagnieżdżonymi w jakimś elemencie. Jako x można używać:
+	- liczby
+	- odd, even
+	- An+B, np. 6n+2 oznacza "co szósty element, począwszy od drugiego"
+A:only-of-type: wybiera wszystkie A, które są jedyne w jakimś rodzicu
+A:last-of-type: wybiera elementy A, które są ostatnie ze swojego rodzaju
+A:empty: wybiera wszystkie A, które nie mają dzieci
+A:not(x): wybiera wszystkie A, które nie pasują do selektora x, np.:
+	- div:not(.small)
+	- p:not(:first-child)
+	- span:not(.small, #long, :empty)
+
+# Attribute selectors:
+
+A[attribute]: wybiera wszystkie A, które mają atrybut 'attribute' z dowolną wartością.
+A[attribute="something"]: wybiera wszystkie A, które mają atrybut 'attribute' z wartością 'something'
+A[attribute1][attribute2]: wybiera wszystkie A, które mają zarówno atrybut 'attribute1' jak i 'attribute2'
+A[attribute^="value"]: wybiera wszystkie A, które mają atrybut 'attribute' zaczynający się od 'value' (case-sensitive)
+A[attribute$="value"]: analogicznie do poprzedniego, ale mające wartość 'value' na końcu
+A[attribute$="value"]: analogicznie do poprzednich, ale mające wartość 'value' gdzieś w środku
+
+
+
