@@ -4,10 +4,63 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ćwiczenie 3</title>
+        <style>
+            #main_container {
+                border: 2px solid black;
+                padding: 2vh;
+
+                display: inline-flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .flex_div {
+                display: flex;
+                flex-flow: row nowrap;
+                gap: 20px;
+            }
+
+            .flex_div div {
+                width: 100px;
+                height: 100px;
+            }
+
+            #first {
+                background-color: #ddbeaa;
+            }
+
+            #second {
+                background-color: #bfac8c;
+            }
+
+            #third {
+                background-color: #9b9c74;
+            }
+
+            #fourth {
+                background-image: url(images/closeup_cat_photo.webp);
+                background-size: 100px 100px;
+                background-position: center;
+            }
+
+            #fifth {
+                background-color: #457d5e;
+            }
+        </style>
     </head>
     <body>
         <main>
-        
+            <div id="main_container">
+                <div class="flex_div">
+                    <div id="first"></div>
+                    <div id="second"></div>
+                </div>
+                <div class="flex_div">
+                    <div id="third"></div>
+                    <div id="fourth"></div>
+                    <div id="fifth"></div>
+                </div>
+            </div>
         </main>
 </body>
 </html>
