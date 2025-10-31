@@ -1,0 +1,22 @@
+:root {
+    /* Background colors */
+    --bg-gray-1: #1A1A1A;
+    --bg-gray-2: #1D1D1D;
+    --bg-gray-3: #212529;
+
+    /* Text colors */
+    --text-pure-white: #FFFFFF;
+    --text-pale-white: #F8F9FA;
+
+    /* Frame colors */
+    --frame-1: #495057;
+    --gray-highlight: #495057;
+
+    /* Accent colors */
+    --darker-violet: #330066;
+    --lighter-violet: #C77DFF;
+}
+
+header {
+    background-color: #1A1A1A;    
+}    
