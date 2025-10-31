@@ -43,11 +43,32 @@ body {
     background-color: var(--bg-gray-3);
 }
 
+h1 {
+    font-size: 32px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    color: var(--text-pale-white);
+}
+
+/* Header section */
 header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
     background-color: var(--bg-gray-1);
     height: var(--header-height);
     width: 100%;
     border-bottom: var(--frame-width) solid var(--frame-1);    
+}
+
+.name-logo {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+#logo {
+    height: 80%;
+    padding: 0 5%;
 }
 
 /* Left navbar + main content section */
@@ -96,4 +117,17 @@ footer {
     height: var(--footer-height);
     width: 100%;
     border-top: var(--frame-1) solid var(--frame-width);
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+}
+
+footer p {
+    font-size: 24px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    color: var(--text-pale-white);
 }
