@@ -49,6 +49,12 @@ h1 {
     color: var(--text-pale-white);
 }
 
+h2 {
+    font-size: 24px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    color: var(--text-pale-white);
+}
+
 p {
     font-size: 16px;
     font-family: 'Bricolage Grotesque', sans-serif;
@@ -129,11 +135,6 @@ nav a:hover {
     background-color: var(--text-pale-white);
 }
 
-#slider2 {
-    align-self: flex-start;
-    display: none;
-}
-
 .name-logo {
     display: flex;
     flex-flow: row nowrap;
@@ -149,15 +150,41 @@ nav a:hover {
 /* Left navbar + main content section */
 .article-leftnav {
     display: flex;
-    min-height: 100vh;
+    min-height: 200vh;
+}
+
+hr {
+    width: 100%;
 }
 
 aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     position: sticky;
     top: 10vh;
     width: 20vw;
     background-color: #1D1D1D;
     border-right: var(--frame-width) solid var(--frame-1);
+}
+
+aside nav {
+    /* Always centered vertically */
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+aside nav a {
+    font-size: 16px;
+    background-color: var(--bg-gray-3);
 }
 
 main {
