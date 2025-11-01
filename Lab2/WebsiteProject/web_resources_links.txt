@@ -1,2 +1,8 @@
 advertarium_logo: https://pixabay.com/vectors/icon-brand-luxury-wedding-7833512/
-https://unsplash.com/photos/silver-macbook-beside-battery-charger-4x-67z_TaGo
+camera gear: https://unsplash.com/photos/silver-macbook-beside-battery-charger-4x-67z_TaGo
+car photo: https://unsplash.com/photos/a-futuristic-car-is-displayed-in-a-blue-case-F-4ulSI63_c
+fragrance photo: https://unsplash.com/photos/a-bottle-of-perfume-sitting-on-top-of-a-table-5PTZ3Nva-uY
+camera man: https://unsplash.com/photos/a-man-holding-a-camera-in-his-hand-8-TyLODcO90
+clothes: https://unsplash.com/photos/a-couple-of-mannequins-that-are-next-to-each-other-3ydFSnQN88U
+plan-for-future: https://unsplash.com/photos/traffic-light-displaying-green-light-mMVbQYEl1DQ
+contact: https://unsplash.com/photos/text-q3QPw37J6Xs
