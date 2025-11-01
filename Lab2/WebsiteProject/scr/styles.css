@@ -43,6 +43,10 @@ body {
     background-color: var(--bg-gray-3);
 }
 
+.main-header {
+    font-size: 51.78px;
+}
+
 h1 {
     font-size: 32px;
     font-family: 'Bricolage Grotesque', sans-serif;
@@ -174,7 +178,7 @@ aside nav {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -193,24 +197,40 @@ main {
 }
 
 .text-photo {
+    padding: 3rem;
     display: flex;
     flex-flow: row nowrap;
-    height: 100%;
-    background-color: var(--gray-highlight);
+    min-height: 100vh;
+    /* background-color: var(--gray-highlight); */
 }
 
 .text-photo .text {
     display: flex;
+    flex-flow: row wrap;
     justify-content: flex-start;
-    flex: 0 0 70%;
-    background-color: var(--text-pale-white);
+    flex: 0 0 55%;
+    /* background-color: var(--text-pale-white); */
+}
+
+.accent-text {
+    color: var(--lighter-violet);
+}
+
+.text-photo .text p {
+    line-height: 2;
 }
 
 .text-photo .photo {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 0 0 30%;
+    flex: 0 0 45%;
+    padding-left: 3rem;
+}
+
+.photo img {
+    width: 80%;
+    border-radius: 10%;
 }
 
 /* Footer section */
