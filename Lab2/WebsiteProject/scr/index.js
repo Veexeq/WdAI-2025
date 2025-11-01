@@ -67,4 +67,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkInitialTheme();
     themeToggle.addEventListener('change', handleThemeToggle);
+
+    // Scroll Spy logic
+
+    // Begins with "#", exclude only "#"
+    const navLinks = document.querySelectorAll('aside nav a[href^="#"]:not([href="#"])');
+    
+    // An array of sections based on ids
+    const sections = Array.from(navLinks).map(link => {
+        const href = link.getAttribute('href');
+        return document.querySelector(href);   
+    });
+
+    // An object containing margin due to the header and a threshold
+    // When 30% of the section will be below the margin, activate the link
+    const observerOptions = {
+        root: null,
+        threshold: 0.3
+    };
+
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const currentSectionID = entry.target.id;
+                const activeLink = document.querySelector(`aside nav a[href="#${currentSectionID}"]`);
+                
+                // Delete the class from all of the other elements
+                navLinks.forEach(link => link.classList.remove('active-link'));
+            
+                // Add it only to the appropriate one
+                if (activeLink) {
+                    activeLink.classList.add('active-link');
+                }
+            }
+        });
+    };
+
+    // New Scroll Spy
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    sections.forEach(section => {
+        if (section) {
+            observer.observe(section);
+        }
+    });
 });

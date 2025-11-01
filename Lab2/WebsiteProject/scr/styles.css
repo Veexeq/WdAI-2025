@@ -229,6 +229,20 @@ aside nav a {
     background-color: var(--bg-gray-3);
 }
 
+/* For Scroll Spy behaviour */
+aside nav a.active-link {
+    background-color: var(--darker-violet);
+    color: var(--text-pale-white);
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#last-link-left {
+    font-size: 24px;
+    font-weight: 600;
+    /* background-color: transparent; */
+}
+
 main {
     flex: 1;
     background-color: var(--bg-gray-3);
