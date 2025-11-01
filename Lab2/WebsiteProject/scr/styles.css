@@ -11,6 +11,7 @@
     /* Accent colors */
     --darker-violet: #330066;
     --lighter-violet: #C77DFF;
+    --darker-violet-hover: rgb(63, 0, 126);
 
     /* Frame-related */
     --frame-1: #495057;
@@ -31,7 +32,25 @@
     box-sizing: border-box;
 }
 
+/* Light mode */
+body.light-mode {
+    --bg-gray-1: #F8F9FA;
+    --bg-gray-2: #E9ECEF;
+    --bg-gray-3: #FFFFFF;
+
+    --text-pure-white: #1A1A1A;
+    --text-pale-white: #212529;
+
+    --frame-1: #DEE2E6;
+    --gray-highlight: #DEE2E6;
+
+    --darker-violet: #F4F0FF;
+    --lighter-violet: #4D0099;
+    --darker-violet-hover: #E8E0FF;
+}
+
 html, body {
+    scroll-behavior: smooth;
     height: 100%;
     width: 100%;
     margin: 0px;
@@ -105,7 +124,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: rgb(63, 0, 126);
+    background-color: var(--darker-violet-hover);
     cursor: pointer;
 }
 
@@ -132,13 +151,26 @@ nav a:hover {
     background-color: var(--darker-violet);
     border-radius: 25%;
     cursor: pointer;
+    z-index: 1;
+}
+
+/* Switch animation */
+.theme-switch #switch {
+    transition: justify-content 0.25s ease-in-out;
+}
+
+body.light-mode #switch {
+    justify-content: flex-start;
 }
 
 .theme-switch input {
     opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
 }
 
-#slider, #slider2 {
+#slider{
     height: 80%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
@@ -175,7 +207,7 @@ aside {
     position: sticky;
     top: 10vh;
     width: 20vw;
-    background-color: #1D1D1D;
+    background-color: var(--bg-gray-2);
     border-right: var(--frame-width) solid var(--frame-1);
 }
 
@@ -199,7 +231,7 @@ aside nav a {
 
 main {
     flex: 1;
-    background-color: #212529;
+    background-color: var(--bg-gray-3);
 }
 
 .text-photo {
@@ -274,4 +306,37 @@ footer p {
     font-size: 24px;
     font-family: 'Bricolage Grotesque', sans-serif;
     color: var(--text-pale-white);
+}
+
+/* Show-hide mechanic of the project section */
+
+/* Indicate that headers are clickable */
+#previous-projects h2 {
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+}
+
+#previous-projects h2:hover {
+    opacity: 0.8;
+}
+
+/* Rotating arrow, using pseudoelement ::before */
+#previous-projects h2::before {
+    content: '❯';
+    display: inline-block;
+    color: var(--lighter-violet);
+    margin-right: 0.75rem; 
+
+    /* For animation purposes */
+    transform: rotate(0deg); 
+    transition: transform 0.25s ease-in-out;
+}
+
+#previous-projects h2.is-open::before {
+    transform: rotate(90deg);
+}
+
+/* For JS logic */
+.is-hidden {
+    display: none;
 }
