@@ -1,11 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advertarium</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../img/logos/advertarium_logo_png.png">
+    
+    <!-- Font import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    
+    <script src="index.js" defer></script>
+    <title>Advertarium</title>
 </head>
 <body>
-  
+    <!-- id="our work" is related to the first header, but
+    in order to maintain Scroll Spy working and actually centering 
+    the section view upon clicking at the navbar on the left, it must
+    be placed here -->
+    <header id="our-work">
+        <div class="theme-switch">
+            <p>LIGHT <br>MODE</p>
+            <label id="switch"> 
+                <input type="checkbox">
+                <span id="slider"></span>
+            </label>
+            <p>DARK <br>MODE</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="name-logo">
+            <h1>Advertarium</h1>
+            <img id="logo" src="../img/logos/advertarium_logo.svg" alt="company's logo">
+        </div>
+    </header>
+    <div class="article-leftnav">
+        <!-- Left navbar -->
+        <aside>
+            <nav>
+                <h2>Page navigation</h2>
+                <hr>
+                <!-- # means to the top -->
+                <a href="#our-work">Our work</a>
+                <a href="#crestone">Crestone Global Partners</a>
+                <a href="#valence-coet">Valence & Coet</a>
+                <a href="#lyra-residences">The Lyra Residences</a>
+                <a href="#distillery">Glencarrow Distillery</a>
+                <hr>
+                <a href="#" id="last-link-left">To the top</a>
+            </nav>
+        </aside>
+
+        <!-- Main article -->
+        <main class="gallery-main">
+            <div class="gallery-heading">
+                <h1 class="main-header">Our work</h1>
+                <p>
+                    This is not a portfolio. It is an <span class="accent-text">exhibition</span> of strategic art.
+                    What follows is a curated selection of our visual commissions. <br><br>
+                    We believe that a single, perfect frame holds more power than a 
+                    thousand fleeting images. Each project you see here began as 
+                    a complex strategic challenge and was resolved as a definitive, cinematic narrative.<br><br>
+                    This is a look into our philosophy of <span class="accent-text">cinematic permanence</span> in 
+                    practice. The full depth of our work, including our most confidential 
+                    projects, is reserved for private consultation.
+                    <br><br>
+                    Our budget for the website regarding both copyrighting and <s>stealing</s> buying rights to
+                    matching pictures ran out just about now, so Ladies and Gentlemen, please enjoy these
+                    Lorem Ipsum paragraphs and cat photos placed on a meticulously crafted <span class="accent-text">display: grid</span> below.
+                </p>
+            </div>
+            <div class="gallery-section">
+                <div id="crestone">
+                    <h1 class="gallery-section-header">Crestone Global Partners</h1>
+                </div>
+                <div class="gallery-photos">
+                    <div class="grid-element" id="element-1">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-2">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-3">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-4">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-5">
+                        <img src="../img/photos/lion-closeup.jpg" alt="image-placeholder">
+                    </div>
+                </div>
+                <br>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque lacus, sollicitudin 
+                    sed dui eget, volutpat bibendum purus. Sed sit amet augue ut tortor fermentum gravida. 
+                    Suspendisse ut massa id velit eleifend commodo nec vitae augue. In vehicula facilisis lorem, 
+                    ut molestie nunc tincidunt sit amet. Duis eget leo velit. Nunc arcu ligula, bibendum non magna at, 
+                    tristique rhoncus est. Integer eget massa elit. Proin dui orci, porttitor ut lectus ac, 
+                    facilisis facilisis justo. Donec a interdum tortor, eu pellentesque magna.
+                </p>
+            </div>
+            <div class="gallery-section">
+                <div id="valence-coet">
+                    <h1 class="gallery-section-header">Vallence & Coet</h1>
+                </div>
+                <div class="gallery-photos">
+                    <div class="grid-element" id="element-1">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-2">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-3">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-4">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-5">
+                        <img src="../img/photos/lion-closeup.jpg" alt="image-placeholder">
+                    </div>
+                </div>
+                <br>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque lacus, sollicitudin 
+                    sed dui eget, volutpat bibendum purus. Sed sit amet augue ut tortor fermentum gravida. 
+                    Suspendisse ut massa id velit eleifend commodo nec vitae augue. In vehicula facilisis lorem, 
+                    ut molestie nunc tincidunt sit amet. Duis eget leo velit. Nunc arcu ligula, bibendum non magna at, 
+                    tristique rhoncus est. Integer eget massa elit. Proin dui orci, porttitor ut lectus ac, 
+                    facilisis facilisis justo. Donec a interdum tortor, eu pellentesque magna.
+                </p>
+            </div>
+            <div class="gallery-section">
+                <div id="lyra-residences">
+                    <h1 class="gallery-section-header">The Lyra Residences</h1>
+                </div>
+                <div class="gallery-photos">
+                    <div class="grid-element" id="element-1">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-2">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-3">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-4">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-5">
+                        <img src="../img/photos/lion-closeup.jpg" alt="image-placeholder">
+                    </div>
+                </div>
+                <br>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque lacus, sollicitudin 
+                    sed dui eget, volutpat bibendum purus. Sed sit amet augue ut tortor fermentum gravida. 
+                    Suspendisse ut massa id velit eleifend commodo nec vitae augue. In vehicula facilisis lorem, 
+                    ut molestie nunc tincidunt sit amet. Duis eget leo velit. Nunc arcu ligula, bibendum non magna at, 
+                    tristique rhoncus est. Integer eget massa elit. Proin dui orci, porttitor ut lectus ac, 
+                    facilisis facilisis justo. Donec a interdum tortor, eu pellentesque magna.
+                </p>
+            </div>
+            <div class="gallery-section">
+                <div id="distillery">
+                    <h1 class="gallery-section-header">Glencarrow Distillery</h1>
+                </div>
+                <div class="gallery-photos">
+                    <div class="grid-element" id="element-1">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-2">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-3">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-4">
+                        <img src="../img/photos/closeup_cat_photo.webp" alt="image-placeholder">
+                    </div>
+                    <div class="grid-element" id="element-5">
+                        <img src="../img/photos/lion-closeup.jpg" alt="image-placeholder">
+                    </div>
+                </div>
+                <br>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque lacus, sollicitudin 
+                    sed dui eget, volutpat bibendum purus. Sed sit amet augue ut tortor fermentum gravida. 
+                    Suspendisse ut massa id velit eleifend commodo nec vitae augue. In vehicula facilisis lorem, 
+                    ut molestie nunc tincidunt sit amet. Duis eget leo velit. Nunc arcu ligula, bibendum non magna at, 
+                    tristique rhoncus est. Integer eget massa elit. 
+                </p>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <p>Wiktor Trybus, 11.2025</p>
+        <p>
+            <span id="clock-hours">00</span>
+            :
+            <span id="clock-minutes">00</span>
+            :
+            <span id="clock-seconds">00</span>
+        </p>
+        <p>Wstęp do Aplikacji Internetowych 2025</p>
+    </footer>
 </body>
 </html>
