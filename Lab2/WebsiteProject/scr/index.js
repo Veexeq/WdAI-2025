@@ -120,8 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => {
         const currDate = new Date();
 
-        hoursElement.innerHTML = currDate.getHours();
-        minutesElement.innerHTML = currDate.getMinutes();
-        secondsElement.innerHTML = currDate.getSeconds();
+        hoursElement.innerHTML = (currDate.getHours() < 10 ? "0" : "") + currDate.getHours();
+        minutesElement.innerHTML = (currDate.getMinutes() < 10 ? "0" : "") + currDate.getMinutes();
+        secondsElement.innerHTML = (currDate.getSeconds() < 10 ? "0" : "") + currDate.getSeconds();
     }, 1000);
 });
