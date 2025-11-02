@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
     
     <script src="index.js" defer></script>
+    <script src="form_script.js" defer></script>
     <title>Advertarium</title>
 </head>
 <body>
@@ -60,11 +61,13 @@
                     <fieldset>
                         <div>
                             <label for="email-address">E-mail address:</label>
-                            <input type="text" name="email" placeholder="Your e-mail address..." id="email-address" required>
+
+                            <!-- type="email" because of the form validation -->
+                            <input type="email" name="email" placeholder="Your e-mail address..." id="email-address" required>
                         </div>
                         <div>
                             <label for="msg-subject">Area of interest:</label>
-                            <select id="msg-subject" name="msg_subject">
+                            <select id="msg-subject" name="msg_subject" required>
                                 <option value="" disabled selected>Please select an area of interest</option>
                                 <option value="brand_film">Brand Film</option>
                                 <option value="photography_commission">Strategic Photography Commission</option>
@@ -79,7 +82,7 @@
                                 placeholder="Please do type the contents of Your message."></textarea>
                         </div>
                         <button type="reset">Reset the contact form</button>
-                        <button type="submit">Submit the message</button>
+                        <button type="submit" id="submit-button">Submit the message</button>
                     </fieldset>
                 </form>
             </div>
