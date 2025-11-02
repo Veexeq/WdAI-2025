@@ -110,4 +110,18 @@ document.addEventListener('DOMContentLoaded', () => {
             observer.observe(section);
         }
     });
+
+    // Clock script
+    const hoursElement = document.getElementById('clock-hours');
+    const minutesElement = document.getElementById('clock-minutes');
+    const secondsElement = document.getElementById('clock-seconds');
+
+    // Update the clock every 1000 ms
+    setInterval(() => {
+        const currDate = new Date();
+
+        hoursElement.innerHTML = (currDate.getHours() < 10 ? "0" : "") + currDate.getHours();
+        minutesElement.innerHTML = (currDate.getMinutes() < 10 ? "0" : "") + currDate.getMinutes();
+        secondsElement.innerHTML = (currDate.getSeconds() < 10 ? "0" : "") + currDate.getSeconds();
+    }, 1000);
 });

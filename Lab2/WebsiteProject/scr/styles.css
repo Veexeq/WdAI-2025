@@ -23,6 +23,12 @@
 
     /* Footer related */
     --footer-height: 10vh;
+
+    /* Gallery photos related */
+    --grid-columns: 4;
+    --grid-rows: 3;
+    --grid-cell-size: 15vh;
+    --grid-gap: 1rem;
 }
 
 /* All elements: border-box */
@@ -192,7 +198,7 @@ body.light-mode #switch {
 /* Left navbar + main content section */
 .article-leftnav {
     display: flex;
-    min-height: 200vh;
+    min-height: 80vh;
 }
 
 hr {
@@ -353,4 +359,97 @@ footer p {
 /* For JS logic */
 .is-hidden {
     display: none;
+}
+
+/* Gallery page related */
+.gallery-main {
+    padding: 3rem;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.gallery-main p {
+    line-height: 1.5;
+}
+
+.gallery-heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 0 30%; /* for centering */
+    border: var(--frame-1) 2px solid;
+    margin-bottom: 10vh;
+    text-align: justify;
+}
+
+.gallery-section-header {
+    margin-bottom: 5rem;
+}
+
+.gallery-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.gallery-section:last-of-type {
+    min-height: 80vh;
+}
+
+.gallery-section p {
+    width: 50%;
+    text-align: justify;
+    margin-top: 2rem;
+}
+
+.gallery-photos {
+    justify-content: center;
+    display: grid;
+    grid-template-rows: repeat(var(--grid-rows), var(--grid-cell-size));
+    grid-template-columns: repeat(var(--grid-columns), var(--grid-cell-size));
+    grid-gap: var(--grid-gap);
+}
+
+.grid-element {
+    height: 100%;
+    width: 100%;
+}
+
+#element-1 {
+    grid-area: 1 / 1 / 3 / 3;
+}
+
+#element-2 {
+    grid-area: 3 / 1 / 4 / 4;
+}
+
+#element-3 {
+    grid-area: 3 / 4 / 4 / 4;
+}
+
+#element-4 {
+    grid-area: 1 / 3 / 3 / 5;
+}
+
+#element-5 {
+    grid-area: 2 / 2 / 3 / 4;
+    z-index: 1;
+}
+
+.grid-element img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: 2px solid var(--text-pale-white);
+    border-radius: 10%;
+}
+
+#top-nav-wrapper {
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
 }
