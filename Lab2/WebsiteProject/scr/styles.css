@@ -453,3 +453,24 @@ footer p {
     z-index: 1;
     position: absolute;
 }
+
+/* Contact page related */
+.contact-main {
+    padding: 3rem;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.contact-main p {
+    line-height: 1.5;
+}
+
+.contact-heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: var(--frame-1) 2px solid;
+    margin-bottom: 10vh;
+    text-align: justify;
+}
