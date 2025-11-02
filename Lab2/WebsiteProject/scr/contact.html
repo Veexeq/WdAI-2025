@@ -56,6 +56,35 @@
             <div class="contact-heading">
                 <h1 class="main-header">Contact <span class="accent-text">us</span></h1>
                 
+                <form action="#" method="POST">
+                    <fieldset>
+                        <legend>Your message data</legend>
+                        
+                        <div>
+                            <label for="email-address">E-mail address:</label>
+                            <input type="text" name="email" placeholder="Your e-mail address..." id="email-address" required>
+                        </div>
+                        <div>
+                            <label for="msg-subject">Area of interest:</label>
+                            <select id="msg-subject" name="msg_subject">
+                                <option value="" disabled selected>Please select an area of interest</option>
+                                <option value="brand_film">Brand Film</option>
+                                <option value="photography_commission">Strategic Photography Commission</option>
+                                <option value="narrative_consult">Full Narrative Consultation</option>
+                                <option value="website_responsive">Website's responsiveness</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="msg-content">Your message:</label>
+                            <textarea name="msg" rows="6" required id="msg-content"
+                                placeholder="Please do type the contents of Your message.">
+                            </textarea>
+                        </div>
+                        <button type="reset">Reset the contact form</button>
+                        <button type="submit">Submit the message</button>
+                    </fieldset>
+                </form>
             </div>
         </main>
     </div>
