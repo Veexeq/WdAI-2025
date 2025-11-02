@@ -6,3 +6,5 @@ camera man: https://unsplash.com/photos/a-man-holding-a-camera-in-his-hand-8-TyL
 clothes: https://unsplash.com/photos/a-couple-of-mannequins-that-are-next-to-each-other-3ydFSnQN88U
 plan-for-future: https://unsplash.com/photos/traffic-light-displaying-green-light-mMVbQYEl1DQ
 contact: https://unsplash.com/photos/text-q3QPw37J6Xs
+pic-placeholder: https://icons.veryicon.com/png/o/miscellaneous/general-icon-library/preview-65.png
+lion closeup: https://media.istockphoto.com/id/1309253970/photo/portrait-of-a-lion.jpg?s=612x612&w=0&k=20&c=mKN05c8Ijh_mfEDB241h-UbK_8wqcyKNoltkI0YLQwo=
