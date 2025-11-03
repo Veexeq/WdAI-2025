@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../img/logos/advertarium_logo_png.png">
+    
+    <!-- Font import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    
+    <script src="index.js" defer></script>
+    <script src="form_script.js" defer></script>
+    <title>Advertarium</title>
+</head>
+<body>
+    <!-- id="our work" is related to the first header, but
+    in order to maintain Scroll Spy working and actually centering 
+    the section view upon clicking at the navbar on the left, it must
+    be placed here -->
+    <header id="contact-us">
+        <div class="theme-switch">
+            <p>LIGHT <br>MODE</p>
+            <label id="switch"> 
+                <input type="checkbox">
+                <span id="slider"></span>
+            </label>
+            <p>DARK <br>MODE</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="name-logo">
+            <h1>Advertarium</h1>
+            <img id="logo" src="../img/logos/advertarium_logo.svg" alt="company's logo">
+        </div>
+    </header>
+    <div class="article-leftnav">
+        <!-- Left navbar -->
+        <aside>
+            <nav>
+                <h2>Page navigation</h2>
+                <hr>
+                <!-- # means to the top -->
+                <a href="#contact-us">Contact us</a>
+                <hr>
+                <a href="#" id="last-link-left">To the top</a>
+            </nav>
+        </aside>
+
+        <!-- Main article -->
+        <main class="contact-main">
+            <div class="contact-heading">
+                <h1 class="main-header">Contact <span class="accent-text">us</span></h1>
+                
+                <form action="#" method="POST">
+                    <fieldset>
+                        <div>
+                            <label for="email-address">E-mail address:</label>
+
+                            <!-- type="email" because of the form validation -->
+                            <input type="email" name="email" placeholder="Your e-mail address..." id="email-address" required>
+                        </div>
+                        <div>
+                            <label for="msg-subject">Area of interest:</label>
+                            <select id="msg-subject" name="msg_subject" required>
+                                <option value="" disabled selected>Please select an area of interest</option>
+                                <option value="brand_film">Brand Film</option>
+                                <option value="photography_commission">Strategic Photography Commission</option>
+                                <option value="narrative_consult">Full Narrative Consultation</option>
+                                <option value="website_responsive">Website's responsiveness</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="msg-content">Your message:</label>
+                            <textarea name="msg" rows="6" required id="msg-content"
+                                placeholder="Please do type the contents of Your message."></textarea>
+                        </div>
+                        <button type="reset">Reset the contact form</button>
+                        <button type="submit" id="submit-button">Submit the message</button>
+                    </fieldset>
+                </form>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <p>Wiktor Trybus, 11.2025</p>
+        <p>
+            <span id="clock-hours">00</span>
+            :
+            <span id="clock-minutes">00</span>
+            :
+            <span id="clock-seconds">00</span>
+        </p>
+        <p>Wstęp do Aplikacji Internetowych 2025</p>
+    </footer>
+</body>
+</html>

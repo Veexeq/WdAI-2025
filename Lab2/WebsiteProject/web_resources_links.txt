@@ -1,0 +1,11 @@
+advertarium_logo: https://pixabay.com/vectors/icon-brand-luxury-wedding-7833512/
+camera gear: https://unsplash.com/photos/silver-macbook-beside-battery-charger-4x-67z_TaGo
+car photo: https://unsplash.com/photos/a-futuristic-car-is-displayed-in-a-blue-case-F-4ulSI63_c
+fragrance photo: https://unsplash.com/photos/a-bottle-of-perfume-sitting-on-top-of-a-table-5PTZ3Nva-uY
+camera man: https://unsplash.com/photos/a-man-holding-a-camera-in-his-hand-8-TyLODcO90
+clothes: https://unsplash.com/photos/a-couple-of-mannequins-that-are-next-to-each-other-3ydFSnQN88U
+plan-for-future: https://unsplash.com/photos/traffic-light-displaying-green-light-mMVbQYEl1DQ
+contact: https://unsplash.com/photos/text-q3QPw37J6Xs
+pic-placeholder: https://icons.veryicon.com/png/o/miscellaneous/general-icon-library/preview-65.png
+lion closeup: https://media.istockphoto.com/id/1309253970/photo/portrait-of-a-lion.jpg?s=612x612&w=0&k=20&c=mKN05c8Ijh_mfEDB241h-UbK_8wqcyKNoltkI0YLQwo=
+flowers video: https://www.youtube.com/watch?v=bXlQ3Mw4uGc
