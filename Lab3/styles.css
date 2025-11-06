@@ -1,0 +1,41 @@
+*::before,
+*::after,
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+}
+
+#header {
+    text-align: center;
+}
+
+#posts-section {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.post {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #d4d4d4;
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0 1rem 0;
+}
+
+.reactions {
+    display: flex;
+}
+
+.reaction-icon {
+    height: 50px;
+    width: 50px;
+}
