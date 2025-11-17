@@ -1,0 +1,88 @@
+:root {
+    --page-bg-color: #faedcd;
+    --bg-color: #ccd5ae;
+    --btn-color: #fefae0;
+
+    --main-font: 'Bricolage Grotesque', sans-serif;
+    --font-size-title: 4rem;
+    --font-size-base: 2rem;
+    --font-size-clock: 8rem;
+
+    --default-border-radius: 2rem;
+}
+
+::before,
+::after,
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background-color: var(--page-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10vmin 30vmin;
+
+    font-family: var(--main-font);
+    font-size: var(--font-size-base);
+}
+
+/* For inheriting font-related stuff from 'body' */
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.main-container {
+    background-color: var(--bg-color);
+    width: 100%;
+    height: 100%;
+    border-radius: var(--default-border-radius);
+    padding: 10vmin;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-title, .timer-display {
+    text-align: center;
+}
+
+.app-title {
+    font-size: var(--font-size-title);
+    margin: 0;
+}
+
+.timer-display {
+    font-size: var(--font-size-clock);
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    margin: 2rem 0;
+}
+
+.timer-buttons {
+    display: flex;
+    gap: 1rem;
+
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 1rem;
+    background-color: var(--btn-color);
+    border-radius: var(--default-border-radius);
+    border-style: none;
+}
+
+.btn:hover {
+    opacity: 80%;
+}
