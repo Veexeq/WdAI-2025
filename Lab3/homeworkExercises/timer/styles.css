@@ -6,7 +6,7 @@
     --main-font: 'Bricolage Grotesque', sans-serif;
     --font-size-title: 4rem;
     --font-size-base: 2rem;
-    --font-size-clock: 8rem;
+    --font-size-clock: clamp(3.5rem, 15vw, 8rem);
 
     --default-border-radius: 2rem;
 }
@@ -27,7 +27,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10vmin 30vmin;
+    padding: clamp(1rem, 5vmin, 3rem);
 
     font-family: var(--main-font);
     font-size: var(--font-size-base);
@@ -80,9 +80,18 @@ button, input, select, textarea {
     padding: 1rem;
     background-color: var(--btn-color);
     border-radius: var(--default-border-radius);
-    border-style: none;
+    border: none;
+    cursor: pointer;
+
+    transition: transform 0.1s ease, background-color 0.2s;
 }
 
 .btn:hover {
     opacity: 80%;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    opacity: 60%;
+    transform: scale(0.95);
 }
