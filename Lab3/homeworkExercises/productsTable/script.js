@@ -30,18 +30,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         return newRow;
     }
 
-    const productsJSON = await fetchJSON("https://dummyjson.com/products");
-    const numOfPositions = 30;
+    function initialPrint(numOfPositions) {
+        for (let i = 0; i < numOfPositions; i++) {
+            const productData = productsJSON.products[i];
+            const product = createProductElement(
+                productData.images[0],
+                productData.title,
+                productData.description
+            );
 
-    for (let i = 0; i < numOfPositions; i++) {
-        const productData = productsJSON.products[i];
-        const product = createProductElement(
-            productData.images[0],
-            productData.title,
-            productData.description
-        );
-
-        productsTable.appendChild(product);
+            productsTable.appendChild(product);
+        }
     }
+
+    const productsJSON = await fetchJSON("https://dummyjson.com/products");
+    initialPrint(30);
 
 });
