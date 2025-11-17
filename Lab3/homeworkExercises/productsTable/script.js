@@ -43,7 +43,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
+    // Show all elements which 'title' matches with 'phrase'
+    function searchByPhrase(phrase) {
+        // Skip the first <tr> since it's the header
+        productsElementArray = Array.from(productsTable.children).slice(1);
+        productsElementArray.forEach(element => {
+            
+            // Title is always the second one
+            const elementTitle = element[1];
+            if (!elementTitle.includes(phrase)) {
+                productsTable.removeChild(element);
+            }
+        });
+    }
+
     const productsJSON = await fetchJSON("https://dummyjson.com/products");
     initialPrint(30);
+
+    searchByPhrase();
 
 });
