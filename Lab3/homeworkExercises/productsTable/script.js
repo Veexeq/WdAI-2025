@@ -31,30 +31,37 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function containsPhrase(entry, phrase) {
-        return entry.includes(phrase);
+        return entry.toLowerCase().includes(phrase.toLowerCase());
     }
 
     function sortData(resData, sortBy) {
-        switch (sortBy) {
-            case "Ascending":
-                resData.sort((entry1, entry2) => {
-                    return entry1.localeCompare(entry2);
-                });
-                break;
-            case "Descending":
-                resData.sort((entry1, entry2) => {
-                    return entry2.localeCompare(entry1);
-                });
-                break;
-            default:
-                break;
+        const TITLE_INDEX = 1;
+
+        if (sortBy === "Ascending") {
+            resData.sort((a, b) => {
+                const title1 = a[TITLE_INDEX].toLowerCase();
+                const title2 = b[TITLE_INDEX].toLowerCase();
+                if (title1 < title2) return -1;
+                if (title1 > title2) return 1;
+                return 0;
+            });
+        }
+
+        if (sortBy === "Descending") {
+            resData.sort((a, b) => {
+                const title1 = a[TITLE_INDEX].toLowerCase();
+                const title2 = b[TITLE_INDEX].toLowerCase();
+                if (title1 < title2) return 1;
+                if (title1 > title2) return -1;
+                return 0;
+            });
         }
     }
 
     function matchData(phrase, sorting, productsJSON, numOfPositions) {
         const resData = [];
 
-        if (isNaN(phrase)) {
+        if (phrase === "") {
             for (let i = 0; i < numOfPositions; i++) {
                 const currPosition = productsJSON.products[i];
                 resData.push([currPosition.images[0], currPosition.title, 
@@ -76,6 +83,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function injectElements(resData) {
+        // Firstly, remove all existing entries
+        const allRows = productsTable.querySelectorAll(".product");
+        allRows.forEach(row => {row.remove()});
+
         resData.forEach(element => {
             const newElement = createProductElement(element[0], element[1], element[2]);
             productsTable.appendChild(newElement);
@@ -86,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const DEFAULT_NUMBER_OF_POSITIONS = 30;
 
     // Initial print - first n elements
-    let resData = matchData(NaN, "Originally", productsJSON, DEFAULT_NUMBER_OF_POSITIONS);
+    let resData = matchData("", "Originally", productsJSON, DEFAULT_NUMBER_OF_POSITIONS);
     injectElements(resData);
 
     const searchBar = document.getElementById("filter-text");
@@ -98,6 +109,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const filter = filterMode.value;
 
         resData = matchData(searchText, filter, productsJSON, DEFAULT_NUMBER_OF_POSITIONS);
+        
+        
         injectElements(resData);
     });
 
