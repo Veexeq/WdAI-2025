@@ -30,36 +30,62 @@ document.addEventListener("DOMContentLoaded", async () => {
         return newRow;
     }
 
-    function initialPrint(numOfPositions) {
-        for (let i = 0; i < numOfPositions; i++) {
-            const productData = productsJSON.products[i];
-            const product = createProductElement(
-                productData.images[0],
-                productData.title,
-                productData.description
-            );
+    function containsPhrase(entry, phrase) {
+        return entry.includes(phrase);
+    }
 
-            productsTable.appendChild(product);
+    function sortData(resData, sortBy) {
+        switch (sortBy) {
+            case "Ascending":
+                resData.sort((entry1, entry2) => {
+                    return entry1.localCompare(entry2);
+                });
+                break;
+            case "Descending":
+                resData.sort((entry1, entry2) => {
+                    return entry2.localCompare(entry1);
+                });
+                break;
+            default:
+                break;
         }
     }
 
-    // Show all elements which 'title' matches with 'phrase'
-    function searchByPhrase(phrase) {
-        // Skip the first <tr> since it's the header
-        productsElementArray = Array.from(productsTable.children).slice(1);
-        productsElementArray.forEach(element => {
-            
-            // Title is always the second one
-            const elementTitle = element[1];
-            if (!elementTitle.includes(phrase)) {
-                productsTable.removeChild(element);
+    function matchData(phrase, sorting, productsJSON, numOfPositions) {
+        const resData = [];
+
+        if (isNaN(phrase)) {
+            for (let i = 0; i < numOfPositions; i++) {
+                const currPosition = productsJSON.products[i];
+                resData.push([currPosition.images[0], currPosition.title, 
+                    currPosition.description]);
             }
+        } else {
+            for (let i = 0; i < numOfPositions; i++) {
+                const currPosition = productsJSON.products[i];
+                if (containsPhrase(currPosition.title, phrase)) {
+                    resData.push([currPosition.images[0], currPosition.title, 
+                        currPosition.description]);
+                }
+            }
+        }
+
+        sortData(resData, sorting);
+
+        return resData;
+    }
+
+    function injectElements(resData) {
+        resData.forEach(element => {
+            const newElement = createProductElement(element[0], element[1], element[2]);
+            productsTable.appendChild(newElement);
         });
     }
 
     const productsJSON = await fetchJSON("https://dummyjson.com/products");
-    initialPrint(30);
+    const DEFAULT_NUMBER_OF_POSITIONS = 30;
 
-    searchByPhrase();
+    let resData = matchData(NaN, "Originally", productsJSON, DEFAULT_NUMBER_OF_POSITIONS);
+    injectElements(resData);
 
 });
