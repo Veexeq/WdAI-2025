@@ -38,12 +38,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         switch (sortBy) {
             case "Ascending":
                 resData.sort((entry1, entry2) => {
-                    return entry1.localCompare(entry2);
+                    return entry1.localeCompare(entry2);
                 });
                 break;
             case "Descending":
                 resData.sort((entry1, entry2) => {
-                    return entry2.localCompare(entry1);
+                    return entry2.localeCompare(entry1);
                 });
                 break;
             default:
@@ -85,7 +85,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     const productsJSON = await fetchJSON("https://dummyjson.com/products");
     const DEFAULT_NUMBER_OF_POSITIONS = 30;
 
+    // Initial print - first n elements
     let resData = matchData(NaN, "Originally", productsJSON, DEFAULT_NUMBER_OF_POSITIONS);
     injectElements(resData);
+
+    const searchBar = document.getElementById("filter-text");
+    const searchBtn = document.getElementById("search-btn");
+    const filterMode = document.getElementById("filter-mode");
+
+    searchBtn.addEventListener("click", () => {
+        const searchText = searchBar.value;
+        const filter = filterMode.value;
+
+        resData = matchData(searchText, filter, productsJSON, DEFAULT_NUMBER_OF_POSITIONS);
+        injectElements(resData);
+    });
 
 });
