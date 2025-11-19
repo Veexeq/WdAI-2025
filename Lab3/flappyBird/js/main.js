@@ -1,19 +1,14 @@
+import { Game } from './Game.js'; 
+
 const canvas = document.getElementById('game-canvas');
-const ctx = canvas.getContext('2d');
-// Achieve sharp edges
-ctx.imageSmoothingEnabled = false;
+const game = new Game(canvas);
 
-const bgImage = new Image();
-bgImage.src = "Flappy_Bird/background-day.png";
+function gameLoop() {
 
-function loop() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    game.update();
+    game.draw();
 
-    if (bgImage.complete) {
-        ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
-    }
-
-    requestAnimationFrame(loop);
+    requestAnimationFrame(gameLoop);
 }
 
-requestAnimationFrame(loop);
+requestAnimationFrame(gameLoop);
