@@ -34,6 +34,9 @@ export class Bird {
         this.flapSpeed = 5;
 
         this.createSprites();
+
+        this.angle = 0;
+        this.maxDownAngle = 90 * (Math.PI / 180);
     }
 
     update() {
@@ -48,6 +51,18 @@ export class Bird {
         if (this.frameTimer % this.flapSpeed === 0) {
             this.currentFrame += 1;
             this.currentFrame %= this.sprites.length;
+        }
+
+        // Handling the sprite's rotation
+        if (this.velocity < 0) {
+            // If bird's going up, set it's rotation to -25 deg
+            this.angle = -25 * (Math.PI / 180);
+        } else {
+            this.angle -= 0.1;
+            
+            if (this.angle > this.maxDownAngle) {
+                this.angle = this.maxDownAngle;
+            }
         }
     }
 
