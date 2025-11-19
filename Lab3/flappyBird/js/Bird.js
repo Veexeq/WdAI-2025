@@ -1,5 +1,19 @@
 export class Bird {
 
+    createSprites() {
+        const imagePaths = [
+            "Flappy_Bird/yellowbird-downflap.png",
+            "Flappy_Bird/yellowbird-midflap.png",
+            "Flappy_Bird/yellowbird-upflap.png",
+        ];
+
+        imagePaths.forEach((path) => {
+            const img = new Image();
+            img.src = path;
+            this.sprites.push(img);
+        });
+    }
+
     constructor(game) {
         this.game = game;
 
@@ -11,8 +25,15 @@ export class Bird {
         this.velocity = 0;
         this.jumpStrength = 4;
 
-        this.x = game.width / 2 - this.width / 2;
+        this.x = game.width / 3 - this.width / 2;
         this.y = game.height / 2 - this.height / 2;
+
+        this.sprites = [];
+        this.currentFrame = 0;
+        this.frameTimer = 0;
+        this.flapSpeed = 5;
+
+        this.createSprites();
     }
 
     update() {
@@ -21,12 +42,32 @@ export class Bird {
         // velocity < 0: birds goes up 
         this.velocity += this.gravity;
         this.y += this.velocity;
+
+        this.frameTimer += 1;
+
+        if (this.frameTimer % this.flapSpeed === 0) {
+            this.currentFrame += 1;
+            this.currentFrame %= this.sprites.length;
+        }
+    }
+
+    // In case of image loading error, draw a yellow rectangle
+    drawFallback() {
+        this.game.ctx.fillStyle = "yellow";
+        this.game.ctx.fillRect(this.x, this.y, 
+            this.width, this.height);
     }
 
     draw() {
-        const ctx = this.game.ctx;
-        ctx.fillStyle = "yellow";
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+
+        const currentImage = this.sprites[this.currentFrame];
+
+        if (currentImage && currentImage.complete) {
+            this.game.ctx.drawImage(currentImage, this.x, this.y, 
+                this.width, this.height);
+        } else {
+            this.drawFallback();
+        }
     }
 
     flap() {
