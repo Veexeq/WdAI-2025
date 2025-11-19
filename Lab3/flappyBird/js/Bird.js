@@ -58,7 +58,7 @@ export class Bird {
             // If bird's going up, set it's rotation to -25 deg
             this.angle = -25 * (Math.PI / 180);
         } else {
-            this.angle -= 0.1;
+            this.angle += 0.1;
             
             if (this.angle > this.maxDownAngle) {
                 this.angle = this.maxDownAngle;
@@ -75,14 +75,27 @@ export class Bird {
 
     draw() {
 
+        const ctx = this.game.ctx;
         const currentImage = this.sprites[this.currentFrame];
 
-        if (currentImage && currentImage.complete) {
-            this.game.ctx.drawImage(currentImage, this.x, this.y, 
-                this.width, this.height);
-        } else {
+        if (!currentImage || !currentImage.complete) {
             this.drawFallback();
+            return;
         }
+
+        // Handling the rotation of the canvas, hence the save
+        // and restore (the whole canvas is being rotated)
+        ctx.save();
+
+        // Move canvas' center to bird's center
+        ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+    
+        ctx.rotate(this.angle);
+
+        ctx.drawImage(currentImage, -this.width / 2, -this.height / 2, 
+            this.width, this.height);
+
+        ctx.restore();
     }
 
     flap() {
