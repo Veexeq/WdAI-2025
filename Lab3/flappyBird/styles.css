@@ -25,4 +25,7 @@ canvas {
     background-color: #eeeeee;
     width: var(--canvas-width);
     height: var(--canvas-height);
+
+    /* Prevent smooth-filter */
+    image-rendering: pixelated;
 }

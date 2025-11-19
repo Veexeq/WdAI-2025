@@ -1,5 +1,7 @@
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
+// Achieve sharp edges
+ctx.imageSmoothingEnabled = false;
 
 const bgImage = new Image();
 bgImage.src = "Flappy_Bird/background-day.png";
