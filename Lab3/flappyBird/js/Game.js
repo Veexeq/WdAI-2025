@@ -1,4 +1,5 @@
 import { Bird } from './Bird.js'
+import { InputHandler } from './InputHandler.js';
 
 export class Game {
 
@@ -15,6 +16,7 @@ export class Game {
         this.ctx.imageSmoothingEnabled = false;
 
         this.bird = new Bird(this);
+        this.inputHandler = new InputHandler(this);
     }
 
     update() {
