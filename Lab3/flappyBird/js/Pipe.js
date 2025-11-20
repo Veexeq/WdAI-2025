@@ -7,8 +7,10 @@ export class Pipe {
         this.height = 320;
         this.gap = 100;
         
+        // Remember about the floor
+        const baseHeight = 112;
         const minHeight = 100;
-        const maxHeight = this.game.height - this.gap - minHeight; 
+        const maxHeight = this.game.height - this.gap - minHeight - baseHeight; 
 
         // (x, y) is the top left corner of the gap
         this.x = this.game.width;

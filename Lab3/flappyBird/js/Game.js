@@ -1,6 +1,7 @@
 import { Bird } from './Bird.js'
 import { InputHandler } from './InputHandler.js';
 import { Pipe } from './Pipe.js';
+import { Background } from './Background.js'
 
 export class Game {
 
@@ -18,6 +19,7 @@ export class Game {
 
         this.bird = new Bird(this);
         this.inputHandler = new InputHandler(this);
+        this.background = new Background(this);
         
         this.pipes = [];
         this.pipeTimer = 100;
@@ -25,6 +27,8 @@ export class Game {
     }
 
     update() {
+
+        this.background.update();
         this.bird.update();
 
         this.pipeTimer += 1;
@@ -39,11 +43,13 @@ export class Game {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
-        this.ctx.fillStyle = "skyblue";
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     
+        this.background.drawBackground();
+
         this.pipes.forEach((pipe) => pipe.draw());
+
+        this.background.drawBase();
+
         this.bird.draw();
     }
 }
