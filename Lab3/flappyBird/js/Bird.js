@@ -122,5 +122,7 @@ export class Bird {
         }
 
         this.velocity = -this.jumpStrength;
+    
+        this.game.audioController.playFlap();
     }
 }

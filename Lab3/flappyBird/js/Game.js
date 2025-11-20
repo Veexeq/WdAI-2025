@@ -2,6 +2,7 @@ import { Bird } from './Bird.js'
 import { InputHandler } from './InputHandler.js';
 import { Pipe } from './Pipe.js';
 import { Background } from './Background.js'
+import { AudioController } from './AudioController.js';
 
 export class Game {
 
@@ -20,6 +21,7 @@ export class Game {
         this.bird = new Bird(this);
         this.inputHandler = new InputHandler(this);
         this.background = new Background(this);
+        this.audioController = new AudioController();
         
         this.pipes = [];
         this.pipeTimer = 100;
@@ -59,6 +61,7 @@ export class Game {
         // Collision with the floor
         if (hitY + hitH >= this.background.baseYPos) {
             this.gameOver = true;
+            this.audioController.playHit();
         }
 
         // Collision with pipes
@@ -72,6 +75,7 @@ export class Game {
                 // corner of the gap)
                 if (hitY < pipe.y || hitY + hitH > pipe.y + pipe.gap) {
                     this.gameOver = true;
+                    this.audioController.playHit();
                 }
             }
         });
@@ -85,6 +89,8 @@ export class Game {
                 
                 this.gameScore += 1;
                 pipe.markedForScoring = true;
+
+                this.audioController.playScore();
             }
         });
     }

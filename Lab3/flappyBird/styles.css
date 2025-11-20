@@ -17,6 +17,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: black;
 }
 
 canvas {
@@ -28,4 +29,7 @@ canvas {
 
     /* Prevent smooth-filter */
     image-rendering: pixelated;
+
+    border: 10px solid white;
+    border-radius: 5px;
 }
