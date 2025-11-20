@@ -5,7 +5,7 @@ export class Pipe {
         
         this.width = 52;
         this.height = 320;
-        this.gap = 150;
+        this.gap = 100;
         
         const minHeight = 100;
         const maxHeight = this.game.height - this.gap - minHeight; 

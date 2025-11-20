@@ -20,7 +20,7 @@ export class Game {
         this.inputHandler = new InputHandler(this);
         
         this.pipes = [];
-        this.pipeTimer = 0;
+        this.pipeTimer = 100;
         this.pipeInterval = 150;
     }
 
