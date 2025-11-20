@@ -20,6 +20,7 @@ export class Pipe {
         this.image.src = "Flappy_Bird/pipe-green.png";
         
         this.markedForDeletion = false;
+        this.markedForScoring = false;
 
         this.velocity = 2;
     }

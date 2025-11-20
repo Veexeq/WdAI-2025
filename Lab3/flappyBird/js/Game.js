@@ -68,12 +68,24 @@ export class Game {
         });
     }
 
+    countPoints() {
+
+        this.pipes.forEach((pipe) => {
+
+            if (!pipe.markedForScoring && this.bird.x > pipe.x + pipe.width) {
+                
+                this.gameScore += 1;
+                pipe.markedForScoring = true;
+            }
+        });
+    }
+
     update() {
         if (this.gameOver) return;
 
         this.background.update();
         this.bird.update();
-        
+
         if (this.gameIsStarted) {
             
             if (this.toStartImageOpacity > 0) {
@@ -89,6 +101,7 @@ export class Game {
             this.pipes.forEach((pipe) => pipe.update());
             this.pipes = this.pipes.filter((pipe) => !pipe.markedForDeletion);
         
+            this.countPoints();
             this.checkCollisions();
         }
     }
