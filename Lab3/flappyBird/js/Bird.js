@@ -112,7 +112,10 @@ export class Bird {
 
     flap() {
 
-        if (this.game.gameOver) return;
+        if (this.game.gameOver) {
+            location.reload();
+            return;
+        };
 
         if (!this.game.gameIsStarted) {
             this.game.gameIsStarted = true;

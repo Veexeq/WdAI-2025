@@ -31,6 +31,15 @@ export class Game {
         this.toStartImageOpacity = 1;
 
         this.gameScore = 0;
+        this.scoreImages = [];
+        this.scoreHeight = 36;
+        this.scoreWidth = 24;
+
+        for (let i = 0; i < 10; i++) {
+            const img = new Image();
+            img.src = `UI/Numbers/${i}.png`;
+            this.scoreImages.push(img);
+        }
 
         this.gameOver = false;
         this.gameOverImage = new Image();
@@ -81,7 +90,10 @@ export class Game {
     }
 
     update() {
-        if (this.gameOver) return;
+        if (this.gameOver) {
+            
+            return;
+        };
 
         this.background.update();
         this.bird.update();
@@ -95,7 +107,9 @@ export class Game {
             this.pipeTimer += 1;
             if (this.pipeTimer > this.pipeInterval) {
                 this.pipes.push(new Pipe(this));
-                this.pipeTimer = 0;
+
+                // Make distance between pipes irregular
+                this.pipeTimer = Math.random() * 120;
             }
 
             this.pipes.forEach((pipe) => pipe.update());
@@ -106,12 +120,47 @@ export class Game {
         }
     }
 
+    drawScore() {
+        const scoreString = this.gameScore.toString();
+
+        const digitWidth = 24;
+        const totalWidth = scoreString.length * digitWidth;
+
+        let currX = this.width - digitWidth;
+        const currY = 0;
+
+        for (let i = scoreString.length - 1; i >= 0; i--) {
+            const idx = parseInt(scoreString[i]);
+            const img = this.scoreImages[idx];
+
+            if (img && img.complete) {
+                this.ctx.drawImage(img, currX, currY, 
+                    this.scoreWidth, this.scoreHeight);
+            }
+
+            currX -= digitWidth;
+        }
+    }
+
+    drawGameOver() {
+
+        if (this.gameOverImage.complete) {
+            
+            this.ctx.drawImage(this.gameOverImage,
+                (this.width - this.gameOverImage.width) / 2,
+                (this.height - this.gameOverImage.height) / 2);
+        }
+    }
+
     draw() {
+
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     
         this.background.drawBackground();
 
         this.pipes.forEach((pipe) => pipe.draw());
+
+        this.drawScore();
 
         this.background.drawBase();
 
@@ -128,6 +177,11 @@ export class Game {
         this.ctx.drawImage(this.toStartImage, msgX, msgY);
 
         this.ctx.restore();
+        }
+
+        if (this.gameOver) {
+
+            this.drawGameOver();
         }
     }
 }
