@@ -24,21 +24,73 @@ export class Game {
         this.pipes = [];
         this.pipeTimer = 100;
         this.pipeInterval = 150;
+
+        this.gameIsStarted = false;
+        this.toStartImage = new Image();
+        this.toStartImage.src = "UI/message.png";
+        this.toStartImageOpacity = 1;
+
+        this.gameScore = 0;
+
+        this.gameOver = false;
+        this.gameOverImage = new Image();
+        this.gameOverImage.src = "UI/gameover.png";
+    }
+
+    checkCollisions() {
+
+        const bird = this.bird;
+
+        // The collision "object" has 5px margins
+        const hitX = bird.x + 5;
+        const hitY = bird.y + 5;
+        const hitH = bird.height - 10;
+        const hitW = bird.width - 10;
+
+        // Collision with the floor
+        if (hitY + hitH >= this.background.baseYPos) {
+            this.gameOver = true;
+        }
+
+        // Collision with pipes
+        this.pipes.forEach((pipe) => {
+
+            // Bird inside the pipe on x-axis
+            if (hitX + hitW > pipe.x && hitX < pipe.x + pipe.width) {
+
+                // Bird inside the pipe on y-axis (take into consideration
+                // that pipe.x and pipe.y are the coordinates of the top right
+                // corner of the gap)
+                if (hitY < pipe.y || hitY + hitH > pipe.y + pipe.gap) {
+                    this.gameOver = true;
+                }
+            }
+        });
     }
 
     update() {
+        if (this.gameOver) return;
 
         this.background.update();
         this.bird.update();
+        
+        if (this.gameIsStarted) {
+            
+            if (this.toStartImageOpacity > 0) {
+                this.toStartImageOpacity -= 0.05;
+            }
 
-        this.pipeTimer += 1;
-        if (this.pipeTimer > this.pipeInterval) {
-            this.pipes.push(new Pipe(this));
-            this.pipeTimer = 0;
+            this.pipeTimer += 1;
+            if (this.pipeTimer > this.pipeInterval) {
+                this.pipes.push(new Pipe(this));
+                this.pipeTimer = 0;
+            }
+
+            this.pipes.forEach((pipe) => pipe.update());
+            this.pipes = this.pipes.filter((pipe) => !pipe.markedForDeletion);
+        
+            this.checkCollisions();
         }
-
-        this.pipes.forEach((pipe) => pipe.update());
-        this.pipes = this.pipes.filter((pipe) => !pipe.markedForDeletion);
     }
 
     draw() {
@@ -51,5 +103,18 @@ export class Game {
         this.background.drawBase();
 
         this.bird.draw();
+
+        if (this.toStartImageOpacity > 0 && this.toStartImage.complete) {
+            this.ctx.save();
+        
+            this.ctx.globalAlpha = this.toStartImageOpacity;
+
+            const msgX = (this.canvas.width - this.toStartImage.width) / 2;
+            const msgY = (this.canvas.height - this.toStartImage.height) / 2; // Lub trochę wyżej
+
+        this.ctx.drawImage(this.toStartImage, msgX, msgY);
+
+        this.ctx.restore();
+        }
     }
 }

@@ -25,8 +25,9 @@ export class Bird {
         this.velocity = 0;
         this.jumpStrength = 4;
 
+        const yStartOffset = 47;
         this.x = game.width / 3 - this.width / 2;
-        this.y = game.height / 2 - this.height / 2;
+        this.y = game.height / 2 - this.height / 2 + yStartOffset;
 
         this.sprites = [];
         this.currentFrame = 0;
@@ -41,29 +42,40 @@ export class Bird {
 
     update() {
 
-        // velocity > 0: bird falls down
-        // velocity < 0: birds goes up 
-        this.velocity += this.gravity;
-        this.y += this.velocity;
+        if (this.game.gameIsStarted) {
 
-        this.frameTimer += 1;
+            // velocity > 0: bird falls down
+            // velocity < 0: birds goes up 
+            this.velocity += this.gravity;
+            this.y += this.velocity;
 
-        if (this.frameTimer % this.flapSpeed === 0) {
-            this.currentFrame += 1;
-            this.currentFrame %= this.sprites.length;
-        }
+            this.frameTimer += 1;
 
-        // Handling the sprite's rotation
-        if (this.velocity < 0) {
-            // If bird's going up, set it's rotation to -25 deg
-            this.angle = -25 * (Math.PI / 180);
+            if (this.frameTimer % this.flapSpeed === 0) {
+                this.currentFrame += 1;
+                this.currentFrame %= this.sprites.length;
+            }
+
+            // Handling the sprite's rotation
+            if (this.velocity < 0) {
+                // If bird's going up, set it's rotation to -25 deg
+                this.angle = -25 * (Math.PI / 180);
+
+            } else {
+                this.angle += 0.1;
+
+                if (this.angle > this.maxDownAngle) {
+                    this.angle = this.maxDownAngle;
+                }
+            }
         } else {
-            this.angle += 0.1;
-            
-            if (this.angle > this.maxDownAngle) {
-                this.angle = this.maxDownAngle;
+            this.frameTimer++;
+            if (this.frameTimer % this.flapSpeed === 0) {
+                this.currentFrame++;
+                this.currentFrame %= this.sprites.length;
             }
         }
+        
     }
 
     // In case of image loading error, draw a yellow rectangle
@@ -99,6 +111,13 @@ export class Bird {
     }
 
     flap() {
+
+        if (this.game.gameOver) return;
+
+        if (!this.game.gameIsStarted) {
+            this.game.gameIsStarted = true;
+        }
+
         this.velocity = -this.jumpStrength;
     }
 }
