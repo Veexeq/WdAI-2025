@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products from DummyJSON</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Products list <hr></h1>
+
+    <form>
+        <label for="filter-text">Search for:</label>
+        <input type="text" id="filter-text">
+        <button type="button" id="search-btn">Search</button>
+        <label for="filter-mode">Select sorting:</label>
+        <select id="filter-mode">
+            <option value="Originally">Originally</option>
+            <option value="Ascending">Ascending</option>
+            <option value="Descending">Descending</option>
+        </select>
+    </form>
+
+    <div id="products-wrapper">
+        <table id="products-table">
+            <tr id="table-title">
+                <th>Photo</th>
+                <th>Title</th>
+                <th>Description</th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
