@@ -19,10 +19,10 @@ zmieniają faktycznie coś na serwerze)
 http.dog, http.cat - strony z kodami odpowiedzi
 
 kody do znania:
-200, 201, 202
-304
-400, 401, 403, 404
-500
+200, 201, 202       : sukcesy
+304                 : przekierowania
+400, 401, 403, 404  : błąd klienta
+500                 : błąd serwera
 
 4. JWT - JSON Web Token (doczytać)
 sposoby przechowywania JWT (doczytać)
@@ -32,3 +32,38 @@ sposoby przechowywania JWT (doczytać)
 
 5. pobrac Extensions: database client
 
+-- Notatki na temat kodów --
+200: OK
+Żądanie przetworzone pomyślnie, serwer zwrócił wynik.
+
+201: Created
+Żądanie (np. POST) przetworzone pomyślnie, serwer stworzył zasób oraz zwraca
+nagłówek Location z URL nowego zasobu.
+
+202: Accepted
+Żądanie przyjęto pomyślnie do kolejki, lecz przetwarzanie jeszcze się nie
+zakończyło (np. serwer zaczął renderować wideo asynchronicznie).
+
+304: Not modified
+Użytkownik posiada już aktualną wersję zasobu w cache, więc serwer celowo
+nie przesyła request.body aby oszczędzić transfer. 
+
+400: Bad request
+Ogólny błąd po stronie klienta, np. żądanie jest niepoprawne syntaktycznie
+(zły JSON) albo nie przeszło walidacji danych.
+
+401: Unauthorized
+Brak uwierzytelniania. Np. próba dostępu do chronionego endpointu
+bez wysłania odpowiedniego tokena.
+
+403: Forbidden
+Brak autoryzacji. Serwer wie, kim jest klient, lecz nie ma się uprawnień
+by zrealizować dany request.
+
+404: Not Found
+Zasób nie został odnaleziony, najczęściej błędny URL lub ID zasobu, które
+nie istnieje w bazie.
+
+500: Internal Server Error
+Ogólny błąd serwera, oznacza nieobsłużony wyjątek lub jakiś błąd konfiguracji,
+który jest bliżej niesprecyzowany w response (ogólny kod).
