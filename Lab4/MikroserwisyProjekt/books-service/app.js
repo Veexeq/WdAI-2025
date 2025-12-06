@@ -53,7 +53,7 @@ app.get('/api/books/:id', async (req, res) => {
              * Cannot set headers after they are sent to the client"
             */
             return res.status(404)
-               .json("The book doesn't exist.");
+               .json({error: "The book doesn't exist."});
         }
 
         res.status(200)
