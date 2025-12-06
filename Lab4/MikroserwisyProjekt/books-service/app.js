@@ -21,25 +21,23 @@ app.get('/api/books', async (req, res) => {
 
         const allBooks = await Book.findAll();
 
-        res.status(200)
-           .json(allBooks);
+        return res.status(200).json(allBooks);
 
     } catch (error) {
 
         // Handle error in a general way for now
-        res.status(500)
-           .json({ error: error.message });
+        return res.status(500).json({ error: error.message });
     }
 });
 
 // GET-ENDPOINT: 'select a specific book'
-app.get('/api/books/:id', async (req, res) => {
+app.get('/api/books/:bookId', async (req, res) => {
 
     try {
 
         // The endpoint was defined as ':id', so the
         // req.params JSON will hold { id: '5' }
-        const id = req.params.id;
+        const id = req.params.bookId;
         const book = await Book.findByPk(id);
 
         if (!book) {
@@ -52,17 +50,14 @@ app.get('/api/books/:id', async (req, res) => {
              * "Error [ERR_HTTP_HEADERS_SENT]: 
              * Cannot set headers after they are sent to the client"
             */
-            return res.status(404)
-               .json({error: "The book doesn't exist."});
+            return res.status(404).json({error: "The book doesn't exist."});
         }
 
-        res.status(200)
-           .json(book);
+        return res.status(200).json(book);
 
     } catch (error) {
 
-        res.status(500)
-           .json({ error: error.message });
+        return res.status(500).json({ error: error.message });
     }
 })
 
@@ -84,22 +79,20 @@ app.post('/api/books', async (req, res) => {
 
         // Send the response with an adequate HTTP code
         // and a newBook body in JSON
-        res.status(201)
-           .json(newBook);
+        return res.status(201).json(newBook);
 
     } catch (error) {
         
-        res.status(500)
-           .json({ error: error.message });
+        return res.status(500).json({ error: error.message });
     }
 });
 
 // DELETE-ENDPOINT: 'delete a record'
-app.delete('/api/books/:id', async (req, res) => {
+app.delete('/api/books/:bookId', async (req, res) => {
 
     try {
 
-        const bookId = req.params.id;
+        const bookId = req.params.bookId;
         const numOfDestroyedRecords = await Book.destroy({
             where: { id: bookId }
         });
@@ -112,17 +105,14 @@ app.delete('/api/books/:id', async (req, res) => {
         */
 
         if (numOfDestroyedRecords === 0) {
-            return res.status(404)
-                      .send();
+            return res.status(404).send();
         } 
         
-        res.status(204)
-           .send();
+        return res.status(204).send();
 
     } catch (error) {
 
-        res.status(500)
-           .json({ error: error.message });
+        return res.status(500).json({ error: error.message });
     }
 });
 

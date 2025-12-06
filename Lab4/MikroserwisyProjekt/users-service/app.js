@@ -37,7 +37,7 @@ app.post('/api/register', async (req, res) => {
          * DB (as a result it has an id, even though 'req.body' only
          * had 'email' and 'password' attributes).
          */
-        res.status(201).json({
+        return res.status(201).json({
             id: newAccount.id,
             email: newAccount.email
         });
