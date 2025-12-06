@@ -10,3 +10,7 @@ node_modules/
 # OS-related junk
 .DS_Store
 Thumbs.db
+
+# DB data
+*.sqlite
+*.db
