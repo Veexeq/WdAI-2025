@@ -107,7 +107,9 @@ app.post('/api/login', async (req, res) => {
          * 1. Parse the technical info in headers
          * 2. Identify the target via the payload
          * 3. See whether the signature of this token matches the 
-         * signature of the target stored on the server's DB
+         * signature calculated based on the secret_key stored in .env
+         * (which is a plaintext file storing all important environmental vars,
+         * API keys etc., therefore it is vital NOT TO PUSH IT TO A REMOTE REPO).
          * 
          * IMPORTANT: header and payload is encoded, not hashed. Everyone can
          * decode it and retrieve the data inside. Therefore, only public information
