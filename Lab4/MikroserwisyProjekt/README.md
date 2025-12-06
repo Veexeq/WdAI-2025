@@ -6,6 +6,7 @@ This project consists of three independent microservices, all comunicating with 
 2. Backend-handling: `Express.js` (a framework) and ORM (Object-relational mapping), here: `Sequalize` (library)
 3. DBs: `SQLite3` (drivers, probably?)
 4. Encryption, not storing passwords in plaintext: `Bcrypt` (library)
+5. Authentication: `jsonwebtoken`, JWT (library)
 
 ## DevDependencies:
 1. `Nodemon`: for dynamically restarting the server
