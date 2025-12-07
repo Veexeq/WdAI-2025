@@ -5,6 +5,7 @@ const PORT = 3002;
 const sequelize = require('./config/database');
 const Order = require('./models/Order');
 const jwt = require('jsonwebtoken');
+const axios = require('axios');
 
 app.use(express.json());
 
@@ -81,6 +82,59 @@ function authenticateToken(req, res, next) {
  */
 app.post('/api/orders', authenticateToken, async (req, res) => {
 
+    try {
+
+        // 'user' field is located in the request's headers
+        const userId = req.user.sub;
+        const { bookId, quantity } = req.body;
+
+        if (!Number.isInteger(quantity) || quantity <= 0) {
+            return res.status(400).json({
+                error: "Quantity must be a positive integer"
+            });
+        }
+
+        /**
+         * Send a HTTP request to 'books-service' via Axios. There is no need
+         * to store it, as the response doesn't contain any relevant information.
+         * 
+         * What is important, is whether this will resolve in a 200: OK status code,
+         * or 404: Not Found status code. If the latter happens, Axios will automatically
+         * throw an error (it happens when the status code is 4xx, 5xx).
+         */
+        await axios.get(`http://localhost:3001/api/books/${bookId}`);
+        
+
+        // For the purpose of this mock, we assume all books cost 1. 
+        // In Book.js a 'value' field is not defined.
+        const totalPrice = quantity;
+
+        const newOrder = await Order.create({
+            userId: userId,
+            bookId: bookId,
+            quantity: quantity,
+            totalPrice: totalPrice
+        });
+
+        return res.status(201).json(newOrder);
+
+    } catch (error) {
+
+        if (axios.isAxiosError(error)) {
+
+            // We have gotten a response from the books-service
+            if (error.response && error.response.status === 404) {
+                return res.status(404).json({
+                    error: 'Book not found in books-service'
+                });
+            } 
+        }
+
+        // If some kind of other error happend, handle it as well
+        return res.status(500).json({
+            error: error.message
+        });
+    }
 });
 
 sequelize.sync().then(() => {
