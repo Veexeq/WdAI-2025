@@ -137,6 +137,43 @@ app.post('/api/orders', authenticateToken, async (req, res) => {
     }
 });
 
+/**
+ * GET endpoint: respond with all orders of user whose id matches with userId
+ * 1. Authenticate: verify the token using authenticateToken. If it's not expired
+ * or forged, we have 'req.user.sub' storing user's ID in the DB.
+ * 2. Authorization: check if the 'userId' matches the ID of the user sending
+ * the request.
+ */
+app.get('/api/orders/:userId', authenticateToken, async (req, res) => {
+
+    try {
+
+        const userId = req.params.userId.toString();
+        const tokenId = req.user.sub.toString();
+        
+        if (userId !== tokenId) {
+            return res.status(403).json({
+                error: "Forbidden"
+            });
+        }
+
+        const orders = await Order.findAll({
+            where: {
+                userId: userId
+            }
+        });
+
+        return res.status(200).json(orders);
+    
+    } catch (error) {
+
+        return res.status(500).json({
+            error: error.message
+        });
+
+    }
+});
+
 sequelize.sync().then(() => {
     console.log('Sequelize has been initialized.');
 
