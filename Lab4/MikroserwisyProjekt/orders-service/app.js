@@ -153,7 +153,8 @@ app.get('/api/orders/:userId', authenticateToken, async (req, res) => {
         
         if (userId !== tokenId) {
             return res.status(403).json({
-                error: "Forbidden"
+                error: "Forbidden",
+                debug: `userId: ${userId} !== tokenId ${tokenId}`
             });
         }
 
@@ -172,6 +173,50 @@ app.get('/api/orders/:userId', authenticateToken, async (req, res) => {
         });
 
     }
+});
+
+app.delete('/api/orders/:orderId', authenticateToken, async (req, res) => {
+
+    try {
+
+        const orderId = req.params.orderId;
+        const orderRecord = await Order.findByPk(orderId);
+
+        if (!orderRecord) {
+            return res.status(404).json({
+                error: "Record of this ID not found in the DB"
+            });
+        }
+
+        const recordUserId = orderRecord.userId.toString();
+        const tokenId = req.user.sub.toString();
+        
+        // Allow deleting only if a valid user is logged in (the token
+        // of the user whose order will be deleted should be passed)
+        if (recordUserId !== tokenId) {
+            return res.status(403).json({
+                error: 'Forbidden'
+            });
+        }
+
+        const numOfDeletedRecords = await Order.destroy({
+            where: { id: orderId }
+        });
+
+        if (numOfDeletedRecords === 0) {
+            return res.status(404).send();
+        }
+
+        return res.status(204).send();
+
+    } catch (error) {
+
+        return res.status(500).json({
+            error: error.message
+        });
+
+    }
+
 });
 
 sequelize.sync().then(() => {
