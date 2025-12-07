@@ -6,8 +6,15 @@ const sequelize = require('./config/database');
 const Order = require('./models/Order');
 const jwt = require('jsonwebtoken');
 const axios = require('axios');
+const { finished } = require('stream');
 
 app.use(express.json());
+
+// Mock price calculation, for now every item costs 1
+function calcPrice(quantity) {
+    const unitPrice = 1;
+    return unitPrice * quantity;
+}
 
 /**
  * Custom-made, simple middleware for the authentication. 
@@ -107,7 +114,7 @@ app.post('/api/orders', authenticateToken, async (req, res) => {
 
         // For the purpose of this mock, we assume all books cost 1. 
         // In Book.js a 'value' field is not defined.
-        const totalPrice = quantity;
+        const totalPrice = calcPrice(quantity);
 
         const newOrder = await Order.create({
             userId: userId,
@@ -211,6 +218,86 @@ app.delete('/api/orders/:orderId', authenticateToken, async (req, res) => {
 
     } catch (error) {
 
+        return res.status(500).json({
+            error: error.message
+        });
+
+    }
+
+});
+
+app.patch('/api/orders/:orderId', authenticateToken, async (req, res) => {
+
+    try {
+
+        const orderId = req.params.orderId;
+        const orderRecord = await Order.findByPk(orderId);
+
+        if (!orderRecord) {
+            return res.status(404).json({
+                error: "Record of this ID not found in the DB"
+            });
+        }
+
+        const recordUserId = orderRecord.userId.toString();
+        const tokenId = req.user.sub.toString()
+
+        if (recordUserId !== tokenId) {
+            return res.status(403).json({
+                error: 'Forbidden'
+            });
+        }
+
+        /**
+         * At this point user is authenticated and authorized to modify
+         * an order whose 'id' is 'orderId'. Updates should only be allowed to
+         * 'quantity', 'totalPrice' and 'bookId' fields ('userId' should remain immutable). 
+         * 
+         * The record can be updated via manually overriding properties as well
+         * as via record.update(...) method.
+         * 
+         * Note: take into consideration, that incomplete information may be 
+         * given in the request.
+         */
+        const { bookId, quantity } = req.body;
+        const finalBookId = (bookId !== undefined) ? bookId : orderRecord.bookId;
+        const finalQuantity = (quantity !== undefined) ? quantity : orderRecord.quantity;
+
+        // Validate 'quantity'
+        if (!Number.isInteger(finalQuantity) || finalQuantity <= 0) {
+            return res.status(400).json({
+                error: 'Quantity must be a positive integer'
+            });
+        }
+
+        // Check, whether the new 'finalBookId' exists in the books-service's DB
+        // (we check whether 'bookId' was in the req JSON, if not, there's no need to validate)
+        if (bookId !== undefined) {
+            await axios.get(`http://localhost:3001/api/books/${finalBookId}`);
+        }
+
+        const newTotalPrice = calcPrice(finalQuantity); 
+
+        await orderRecord.update({
+            bookId: finalBookId,
+            quantity: finalQuantity,
+            totalPrice: newTotalPrice
+        });
+
+        return res.status(200).json(orderRecord);
+
+    } catch (error) {
+
+        // Handle errors that have arosen during axios request call
+        if (axios.isAxiosError(error)) {
+            if (error.response && error.response.status === 404) {
+                return res.status(400).json({
+                    error: "New bookId doesn't exist in books-service's DB"
+                });
+            }
+        }
+
+        // All other errors
         return res.status(500).json({
             error: error.message
         });
