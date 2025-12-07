@@ -47,6 +47,10 @@ function authenticateToken(req, res, next) {
          * were encountered, and the endpoint we were processing will continue its logic
          * having a request with an additional 'user' field with a correct client info
          * (client being the token bearer).
+         * 
+         * 'user' on the right is read from the payload of the token (remember, sufficient
+         * data has been encoded there for the sake of this scenario, we can now retrieve all
+         * of the necessary info about the token bearer).
          */
         req.user = user;
 
@@ -58,6 +62,26 @@ function authenticateToken(req, res, next) {
         next();
     });
 }
+
+/**
+ * This comment is supplemenets the logic of authenicateToken middleware.
+ * 
+ * This endpoint takes two methods, they define a 'to-do list' of logic that handle the request. 
+ * First of all, 'req' goes to authenticateToken(). This function can either:
+ * 1. return res.(...).json(...), which interrupts the 'function queue' (as a result we never go into
+ * the async arrow-function that follows the middleware). We handle incorrect JWT there.
+ * 2. authenticate the client via validating the token
+ * 
+ * The result of the latter is that an extended 'req' JSON (it's now got the 'user' attribute)
+ * goes into the arrow function, because at the end of 'authenticateToken' we call next(), which is
+ * a pointer to the another method on the 'to-do list' below.
+ * 
+ * Having sufficient info about the user from the token, we can perform the actual logic, that is 
+ * place a new order.
+ */
+app.post('/api/orders', authenticateToken, async (req, res) => {
+    
+});
 
 sequelize.sync().then(() => {
     console.log('Sequelize has been initialized.');
