@@ -72,7 +72,7 @@ function authenticateToken(req, res, next) {
  * the async arrow-function that follows the middleware). We handle incorrect JWT there.
  * 2. authenticate the client via validating the token
  * 
- * The result of the latter is that an extended 'req' JSON (it's now got the 'user' attribute)
+ * The result of the latter is that an extended 'req' object (it's now got the 'user' attribute)
  * goes into the arrow function, because at the end of 'authenticateToken' we call next(), which is
  * a pointer to the another method on the 'to-do list' below.
  * 
@@ -80,7 +80,7 @@ function authenticateToken(req, res, next) {
  * place a new order.
  */
 app.post('/api/orders', authenticateToken, async (req, res) => {
-    
+
 });
 
 sequelize.sync().then(() => {
