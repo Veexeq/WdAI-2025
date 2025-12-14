@@ -1,0 +1,19 @@
+.counterWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.counterText {
+  font-size: 64px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 800;
+}
+
+.counterButton {
+  font-size: 32px;
+}

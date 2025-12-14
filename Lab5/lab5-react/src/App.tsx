@@ -1,13 +1,10 @@
 import './App.css'
-import Cart from './components/koszyk/Cart' 
-import NewCart from './components/koszyk/NewCart';
+import Counter from './components/liczniki/Counter';
 
 function App() {
   return (
     <>
-      <NewCart />
-      <hr />
-      <Cart />
+      <Counter />
     </>
   );
 }
