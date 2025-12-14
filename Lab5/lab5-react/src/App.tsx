@@ -1,10 +1,6 @@
 import './App.css'
 import Welcome from './components/welcome';
-
-interface WelcomeObject {
-  name: string,
-  age: number
-};
+import type { WelcomeObject } from './types/welcomeComponent';
 
 function App() {
 

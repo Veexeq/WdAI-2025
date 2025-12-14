@@ -1,4 +1,6 @@
-function Welcome(props: {name: string, age: number}) {
+import type { WelcomeObject } from "../types/welcomeComponent";
+
+function Welcome(props: WelcomeObject) {
     return (
         <>
             <h1>Hello, {props.name}.</h1>
