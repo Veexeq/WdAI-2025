@@ -9,9 +9,15 @@ function App() {
     age: 20
   }
 
+  const welcomeObjectFemale: WelcomeObject = {
+    name: "Ania",
+    age: 21
+  };
+
   return (
     <>
       <Welcome name={welcomeObject.name} age={welcomeObject.age} />
+      <Welcome name={welcomeObjectFemale.name} age={welcomeObjectFemale.age} />
     </>
   )
 }
