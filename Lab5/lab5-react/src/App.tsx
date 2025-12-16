@@ -1,6 +1,7 @@
 import './App.css'
-import Update from './components/inne/Update';
-
+import StudentManager from './components/studenci/StudentManager'
+// import Students from './components/studenci/Students';
+// import Update from './components/inne/Update';
 // import Ternary from './components/inne/Ternary'
 // import Login from './components/formularze/Login'
 // import Password from './components/formularze/Password';
@@ -11,7 +12,7 @@ import Update from './components/inne/Update';
 function App() {
   return (
     <>
-      <Update />
+      <StudentManager />
     </>
   );
 }
