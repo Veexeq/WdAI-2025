@@ -1,6 +1,8 @@
 import './App.css'
-import Login from './components/formularze/Login'
+import Update from './components/inne/Update';
 
+// import Ternary from './components/inne/Ternary'
+// import Login from './components/formularze/Login'
 // import Password from './components/formularze/Password';
 // import Form from './components/formularze/Form';
 // import Counter from './components/liczniki/Counter';
@@ -9,7 +11,7 @@ import Login from './components/formularze/Login'
 function App() {
   return (
     <>
-      <Login />
+      <Update />
     </>
   );
 }
