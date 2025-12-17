@@ -1,0 +1,73 @@
+:root {
+  --ink-black: #0d1321ff;
+  --deep-space-blue: #1d2d44ff;
+  --blue-slate: #3e5c76ff;
+  --dusty-denim: #748cabff;
+  --eggshell: #f0ebd8ff;
+}
+
+body, html, p {
+  margin: 0;
+  padding: 0;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--deep-space-blue);
+  border: var(--blue-slate) 5px solid;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  
+  background-color: var(--eggshell);
+  border: var(--dusty-denim) 5px solid;
+  border-radius: 5px;
+
+  padding: 0 1rem 0 1rem;
+  margin: 5vh 20vw 5vh 20vw;
+}
+
+.header, .footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header {
+  border-bottom: var(--dusty-denim) 2px solid;
+}
+
+.footer {
+  border-top: var(--dusty-denim) 2px solid;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 1rem;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-left: var(--dusty-denim) 2px solid;
+  border-right: var(--dusty-denim) 2px solid;
+}
