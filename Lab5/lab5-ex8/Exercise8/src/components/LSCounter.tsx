@@ -3,10 +3,20 @@ import { useState } from 'react';
 import styles from './lscounter.module.css'
 
 function LSCounter() {
-  const [counter, setCounter] = useState(0);
+  let localCounter;
+
+  if (localStorage.counter) {
+    localCounter = Number(localStorage.counter);
+  } else {
+    localCounter = 1;
+    localStorage.setItem('counter', String(localCounter));
+  }
+
+  const [counter, setCounter] = useState(localCounter);
 
   const incrementer = () => {
     setCounter(prev => (prev + 1));
+    localStorage.setItem('counter', String(localCounter + 1));
   }; 
 
   return (
