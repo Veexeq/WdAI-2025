@@ -11,6 +11,9 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
+
+  background-color: var(--space-indigo);
+  height: 100vh;
 }
 
 .card {

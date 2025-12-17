@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import './App.css'
 
-import LSCounter from './components/LSCounter';
+import LSCounter from './components/counter/LSCounter';
 
 function App() {
 
