@@ -6,6 +6,7 @@ import './App.css'
 import HomePage from './components/blog/HomePage';
 import Blog from './components/blog/Blog';
 import Post from './components/blog/Post';
+import AddPage from './components/blog/AddPage';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/article/:id' element={<Post />} />
+          <Route path='/dodaj' element={<AddPage />} />
         </Routes>
       </BrowserRouter>
     </>

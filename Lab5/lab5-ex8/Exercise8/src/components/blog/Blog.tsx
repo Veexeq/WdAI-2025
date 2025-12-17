@@ -22,7 +22,7 @@ function Blog() {
       <div className={styles.wrapper}>
         <h1>List of all posts</h1>
         {posts.map(post => (
-          <Link className={styles.link} to={'/article/' + post.id}>{post.title}</Link>
+          <Link key={post.id} className={styles.link} to={'/article/' + post.id}>{post.title}</Link>
         ))}
       </div>
     </>

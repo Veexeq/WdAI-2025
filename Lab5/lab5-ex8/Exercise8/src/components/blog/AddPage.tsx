@@ -2,9 +2,18 @@ import { useState } from 'react';
 import styles from './addpage.module.css'
 import { type post } from '../../types/post';
 
+const ID_KEY = 'id';
+
 function AddPage() {
 
-  const [id, setId] = useState(0);
+  const [id, setId] = useState(() => {
+    if (localStorage.getItem(ID_KEY)) {
+      return Number(localStorage.getItem(ID_KEY));
+    } else {
+      localStorage.setItem(ID_KEY, '0');
+      return 0;
+    }
+  });
   const [title, setTitle] = useState('');
   const titleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -26,7 +35,13 @@ function AddPage() {
 
     const post: post = { id: id, title: title, body: body };
     localStorage.setItem(String(id), JSON.stringify(post));
-    setId(prev => prev + 1);
+
+    // Handle ID incrementation
+    const newId = id + 1;
+    setId(newId);
+    localStorage.setItem(ID_KEY, String(newId));
+
+    // Reset form
     setTitle('');
     setBody('');
   };
