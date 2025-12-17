@@ -1,5 +1,8 @@
 import './App.css'
-import StudentManager from './components/studenci/StudentManager'
+import Countdown from './components/efekty/Countdown';
+// import Title from './components/efekty/Title';
+// import Counter from './components/efekty/Counter';
+// import StudentManager from './components/studenci/StudentManager'
 // import Students from './components/studenci/Students';
 // import Update from './components/inne/Update';
 // import Ternary from './components/inne/Ternary'
@@ -12,7 +15,7 @@ import StudentManager from './components/studenci/StudentManager'
 function App() {
   return (
     <>
-      <StudentManager />
+      <Countdown />
     </>
   );
 }
