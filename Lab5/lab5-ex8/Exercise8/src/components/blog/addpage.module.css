@@ -1,0 +1,36 @@
+:root {
+  --space-indigo: #22223bff;
+  --dusty-grape: #4a4e69ff;
+  --lilac-ash: #9a8c98ff;
+  --almond-silk: #c9ada7ff;
+  --parchment: #f2e9e4ff;
+}
+
+.wrapper {
+  height: 100vh;
+  background-color: var(--space-indigo);
+  color: var(--parchment);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1rem;
+
+  border: var(--almond-silk) 3px solid;
+  border-radius: 5px;
+}
+
+input, textarea {
+  margin: 1rem 0;
+  font-size: 16px;
+}
