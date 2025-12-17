@@ -7,7 +7,7 @@ function Blog() {
   const posts: post[] = [];
   for (let i = 0; i < localStorage.length; i++) {
     const key: string | null = localStorage.key(i);
-    if (key && key !== 'counter') {
+    if (key && !isNaN(Number(key))) {
 
       // ! at the end is 'non-null assertion', assuring the TS
       // compiler that this can't be null
