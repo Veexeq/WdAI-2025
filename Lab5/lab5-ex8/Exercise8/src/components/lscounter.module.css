@@ -1,0 +1,40 @@
+:root {
+  --space-indigo: #22223bff;
+  --dusty-grape: #4a4e69ff;
+  --lilac-ash: #9a8c98ff;
+  --almond-silk: #c9ada7ff;
+  --parchment: #f2e9e4ff;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  width: 30vw;
+  padding: 1rem;
+
+  border: var(--parchment) 3px solid;
+  border-radius: 4px;
+
+  background-color: var(--dusty-grape);
+}
+
+#counterText {
+  font-size: 64px;
+  font-weight: bold;
+  color: var(--parchment);
+}
+
+.incrementer {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--space-indigo)
+}
