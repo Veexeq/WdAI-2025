@@ -4,6 +4,8 @@ import './App.css'
 // import LSCounter from './components/counter/LSCounter';
 // import AddPage from './components/blog/AddPage';
 import HomePage from './components/blog/HomePage';
+import Blog from './components/blog/Blog';
+import Post from './components/blog/Post';
 
 function App() {
 
@@ -12,6 +14,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />} />
+          <Route path='/blog' element={<Blog />} />
+          <Route path='/article/:id' element={<Post />} />
         </Routes>
       </BrowserRouter>
     </>
