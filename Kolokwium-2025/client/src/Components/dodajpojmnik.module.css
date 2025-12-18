@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+form {
+  padding: 1rem;
+  margin: 1rem;
+  border: 3px black solid;
+  border-radius: 5px;
+}
+
+input, button {
+  margin: 5px;
+}
